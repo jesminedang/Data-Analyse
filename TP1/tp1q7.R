@@ -8,21 +8,23 @@ R<-c(9, 3, 3, 1)
 # Entrer des valeurs des respectives phénotypes de observé
 O<-c(1528, 106, 117, 381)
 
-phenotype<-data.frame(R,O)
+#phenotype<-data.frame(R,O)
 # calculer la valeur théorique de chaque catégorie de phénotype
+# l'hypothèse Ho: 9:3:3:1
+# calculer les valeurs théorique
 sum1=sum(R)
 sum2=sum(O)
-sum3=phenotype$R+phenotype$O
-sum=sum(R,O)
-E1=sum1*sum3/sum
-E2=sum2*sum3/sum
-E<-data.frame(E1,E2)
+E<-R*(sum2/sum1)
+#E
+#[1] 1199.25  399.75  399.75  133.25
+
 # Créer une fonction du Khi deux (X2)
-K=sum((O-E2)^2/E2)
-# Avec α=0.05, degré de liberté = k - 1,  
-# Sa valeur observée est K=0.09440928
+K=sum((O-E)^2/E)
+# [1] 966.61
+
+# Avec α=0.05, degré de liberté = k - 1 = 4-1 = 3, DF=3, K = 7.81
+# Sa valeur observée est K= 966.61 < 7.81
 # Région de rejet de H0 associée à α = 5%
-# loi de K sous H0
 # Sous H0, on s'attend à observer une valeur de Q2 proche de 0. 
 # Plus la valeur de K est grande et plus elle est en faveur de H1.
 # La région de rejet est située à l'extrémité droite du domaine. 
@@ -32,6 +34,8 @@ K=sum((O-E2)^2/E2)
 
 # question 8
 # Test d'indépendance pour les variables qualitatives
+# Test de forme
+# Test de couleur: light brown
 
 ##############################################################
 
